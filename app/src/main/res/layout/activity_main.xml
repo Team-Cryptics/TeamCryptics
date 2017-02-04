@@ -14,17 +14,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press 1 to start" />
+        android:text="Send menu for main menu" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         android:ems="10"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/editText"
-        android:hint="Type your message" />
+        android:hint="Type your message"
+
+        />
 
     <ImageButton
         android:layout_width="wrap_content"

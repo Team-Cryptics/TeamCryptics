@@ -32,13 +32,15 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     String t=et1.getText().toString();
                     new FireClass(t);
+                    et1.setText("");
                 }
             });
 
     }
 
 
-    /*void click(){
+    /*
+    void click(){
 
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override

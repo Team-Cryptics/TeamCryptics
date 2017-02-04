@@ -12,11 +12,33 @@ import com.google.firebase.database.ValueEventListener;
  * Created by samarthgupta on 04/02/17.
  */
 
-    public class FireClass extends MainActivity{
+    public class FireClass extends MainActivity {
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference ref = firebaseDatabase.getReference();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference ref = firebaseDatabase.getReference();
 
+
+    public FireClass(final String where) {
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dsp : dataSnapshot.child(where).getChildren()) {
+                    Log.i("TAG", dsp.getKey().toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
+}
+
+    /*
     public FireClass(){
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -37,25 +59,6 @@ import com.google.firebase.database.ValueEventListener;
 
     }
 
-
-    public FireClass(final String where){
-
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    for (DataSnapshot dsp : dataSnapshot.child(where).getChildren()){
-                        Log.i("TAG",dsp.getKey().toString());
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-
-        }
 
     public FireClass(final String where1, final String where2){
 
@@ -92,10 +95,10 @@ import com.google.firebase.database.ValueEventListener;
             }
         });
 
-    }
+    } */
 
 
 
-    }
+
 
 
