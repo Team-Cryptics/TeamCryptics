@@ -26,12 +26,19 @@ public class MainActivity extends AppCompatActivity {
 
             et1=(EditText)findViewById(R.id.editText);
             ib1=(ImageButton)findViewById(R.id.imageButton);
-            click();
+
+            ib1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String t=et1.getText().toString();
+                    new FireClass(t);
+                }
+            });
 
     }
 
 
-    void click(){
+    /*void click(){
 
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             click();
         }
     }
-
+*/
 
 }
 
