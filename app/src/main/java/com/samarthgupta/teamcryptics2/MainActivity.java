@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             et1=(EditText)findViewById(R.id.editText);
             ib1=(ImageButton)findViewById(R.id.imageButton);
 
+
             ib1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
