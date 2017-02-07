@@ -8,6 +8,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 /**
  * Created by samarthgupta on 04/02/17.
  */
@@ -16,24 +18,30 @@ import com.google.firebase.database.ValueEventListener;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference ref = firebaseDatabase.getReference();
+    ArrayList<String> myList = new ArrayList<String>();
 
 
-    public FireClass(final String where) {
+
+
+    public ArrayList<String> getList(final String where) {
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot dsp : dataSnapshot.child(where).getChildren()) {
+                    myList.add(dsp.getKey().toString());
                     Log.i("TAG", dsp.getKey().toString());
-                }
 
+                }
+                Log.i("TAG" , myList.get(0));
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        return myList;
 
     }
 }

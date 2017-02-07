@@ -2,27 +2,29 @@ package com.samarthgupta.teamcryptics2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    ArrayList<String> newList = new ArrayList<String>();
         ImageButton ib1;
         EditText et1;
+        ListView lv1;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            lv1 = (ListView)findViewById(R.id.listView);
+             ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this , android.R.layout.simple_list_item_1 , newList);
+            lv1.setAdapter(myAdapter);
 
             et1=(EditText)findViewById(R.id.editText);
             ib1=(ImageButton)findViewById(R.id.imageButton);
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String t=et1.getText().toString();
-                    new FireClass(t);
+                    FireClass fireClass = new FireClass();
+                    newList = fireClass.getList(t);
                     et1.setText("");
                 }
             });
